@@ -1,0 +1,86 @@
+.girl
+	&__name
+		+font(1.6rem, $d: underline)
+		text-decoration-color: $light-golden
+	&__title
+		+font(1.2rem, $font-1)
+		margin: 15px 0
+	&__icons
+		+flex
+	&__icon
+		+size(28px)
+		margin-right: 10px
+		path
+			fill: $light
+	&__attributes
+		border-bottom: 1px solid $lighter-dark
+		border-top: 1px solid $lighter-dark
+		margin: 20px 0
+		padding: 10px 0
+	&__attribute
+		color: $light
+		margin: 15px 0
+	&__values
+		+flex($g: 1, $b: 0)
+		border: 2px solid $muted
+		margin-top: 20px
+	&__value
+		+flex(center, center)
+		padding: 25px 0
+		&:nth-child(1)
+			border-right: 2px solid $muted
+	&__details,
+	&__comments
+		+font($c: $light, $lh: 1.6, $a: justify)
+		border: 2px solid $muted
+		margin: 80px 0
+		padding: 40px 15px 25px
+		position: relative
+	&__details__title,
+	&__comments__title
+		+position(0, $l: 15px)
+		background: $dark
+		border: 2px solid $muted
+		padding: 5px 15px
+		transform: translateY(-50%)
+	&__details__footer
+		border-top: 1px solid $lighter-dark
+		margin-top: 25px
+		padding-top: 25px
+	&__share
+		text-align: center
+	&__comments__subtitle
+		font-weight: $font-2
+	&__comments__small
+		margin-bottom: 15px
+		font-size: .8rem
+	&__comments__block:not(:last-child)
+		border-bottom: 1px solid $lighter-dark
+		margin-bottom: 25px
+		padding-bottom: 25px
+
++desktop
+	.girl
+		+flex(center)
+		margin: 30px auto 50px
+		max-width: 1100px
+		&__left
+			width: 65%
+		&__right
+			padding-left: 15px
+			width: 35%
+		&__details__footer
+			+flex(space-around)
+
++mobile
+	.girl
+		&__name
+			margin-top: 15px
+			text-align: center
+		&__title
+			+font($a: center, $lh: 1.5)
+		&__icons
+			justify-content: center
+		&__details__footer__text
+			margin-top: 10px
+			text-align: center

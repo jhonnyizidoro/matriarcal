@@ -1,0 +1,30 @@
+.carousel
+	overflow: hidden
+	position: relative
+	&__slides
+		+flex($a: flex-start, $s: 0)
+		cursor: grab
+		&:active
+			cursor: grabbing
+	&__slide
+		+cover
+		filter: drop-shadow($shadow-1)
+	&__control__right,
+	&__control__left
+		+position(50%)
+		+font(1.6rem, $c: $dark)
+		+flex(center, center)
+		+size(40px)
+		background: rgba($white, .5)
+		border-radius: 50%
+		cursor: pointer
+		transform: translateY(-50%)
+		transition: 250ms
+	&__control__left
+		left: 10px
+	&__control__right
+		right: 10px
+	&__control__icon
+		+size(20px)
+		path
+			fill: $dark

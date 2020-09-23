@@ -1,0 +1,56 @@
+extends template
+block Content
+	.banner
+		h1.banner__text ENCONTRE A DEUSA GREGA#[br]PERFEITA
+		img.banner__image(
+			data-src-desktop="/images/banner-desktop.jpg"
+			data-src-mobile="/images/banner-mobile.jpg"
+			alt="Banner"
+		)
+	.container
+		form.search__form
+			+Input(name="search", label="Palavras chave", class="large", inputmode="search", value=param('search'))
+			+Select(name="minAge", label="Idade mínima", inputmode="numeric")
+				- for (let age = ages.min; age <= ages.max; age++)
+					option(value=age, selected=param('minAge') === String(age))=age
+			+Select(name="maxAge", label="Idade máxima", inputmode="numeric")
+				- for (let age = ages.min; age <= ages.max; age++)
+					option(value=age, selected=param('maxAge') === String(age))=age
+			.form__submit
+				button.button.button--golden.button--fullwidth(type="submit", aria-label="Pesquisar") PESQUISAR
+			+Select(name="halfAnHourValue", label="Cachê máximo")
+				- for (let halfAnHourValue = values.min; halfAnHourValue <= values.max; halfAnHourValue = halfAnHourValue + 5)
+					option(value=halfAnHourValue, selected=param('halfAnHourValue') === String(halfAnHourValue)) R$#{halfAnHourValue},00
+			+Select(name="state", label="Estado", selectedOption=param('cityId'))
+				each state in states
+					option(value=state.id, selected=param('state') === String(state.id))=state.abbreviation
+			+Select(name="cityId", label="Cidade")
+			.form__group.form__group--large
+				+Checkbox(name="creditCard", label="Aceita cartão", checked=!!param('creditCard'))
+				+Checkbox(name="ownPlace", label="Locao próprio", checked=!!param('ownPlace'))
+		h1.title NOSSAS DEUSAS
+		main.card__grid
+			each girl in girls
+				a.card(href=getOptimizedUrl(girl))
+					figure.card__figure
+						img.card__image(
+							data-src=`/storage/${girl.images[0]}`,
+							alt=`Acompanhante ${girl.city} - ${girl.name}`,
+							title=`Acompanhante ${girl.city} - ${girl.name}`
+							data-loading="lazy"
+						)
+					h2.card__title=girl.displayName.toUpperCase()
+					.card__subtitle #{girl.age} anos ~ #{girl.height / 100}m ~ #{girl.weight}Kg
+					.card__pill
+						!=svg('location-pin', 'card__pill__icon')
+						span.card__pill__text #{girl.city.toUpperCase()}, #{girl.neighborhood.toUpperCase()}
+		section.join
+			img.join__image(data-src="/images/logo-simple.png", alt="Logo Matriarcal", data-loading="lazy")
+			.join__title SEJA UMA MATRIARCA
+			.join__text Basta preencher um formulário que entraremos em contato com você.
+			a.button.button--golden(href="/anuncie") PREENCHER FORMULÁRIO
+		section.about
+			.about__title CONHEÇA A #[strong MATRIARCAL]
+			p.about__text Morbi vestibulum volutpat enim. Curabitur turpis. Etiam imperdiet imperdiet orci. Proin sapien ipsum, porta a, auctor quis, euismod ut, mi. Nam commodo suscipit quam. Quisque rutrum. Curabitur a felis in nunc fringilla tristique. Quisque libero metus, condimentum nec, tempor a, commodo mollis, magna. Nullam sagittis. In consectetuer turpis ut velit.
+			p.about__text Donec posuere vulputate arcu. Aliquam eu nunc. Phasellus ullamcorper ipsum rutrum nunc. Praesent egestas tristique nibh. Fusce convallis metus id felis luctus adipiscing.
+			p.about__text Duis arcu tortor, suscipit eget, imperdiet nec, imperdiet iaculis, ipsum. Ut varius tincidunt libero. Vestibulum rutrum, mi nec elementum vehicula, eros quam gravida nisl, id fringilla neque ante vel mi. Praesent turpis. Pellentesque auctor neque nec urna.

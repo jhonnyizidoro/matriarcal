@@ -1,0 +1,15 @@
+include ../mixins/includes
+doctype html
+html(lang="pt-br")
+	head
+		+Head
+	body
+		.container.login__container
+			form.login(action="/admin/login", method="POST")
+				img.login__image(src="/images/logo.png", alt="Logo Matriarcal")
+				+Input(name="username", label="Usuário", required, autocomplete="username")
+				+Input(name="password", label="Senha", required, type="password", autocomplete="current-password")
+				.form__submit
+					button.button.button--golden.button--fullwidth(type="submit", aria-label="Acessar o painel") ENTRAR
+		+Alert
+		script(src="/js/app.js")

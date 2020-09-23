@@ -1,0 +1,37 @@
+extends template
+block Content
+	form.admin__search
+		+Input(name="displayName", label="Nome", inputmode="search", value=param('displayName'))
+		+Select(name="isActive", label="Status")
+			option(value="1", selected=param('isActive') === '1') Ativas
+			option(value="0", selected=param('isActive') === '0') Excluídas
+		button.button.button--golden(type="submit", aria-label="Pesquisar") PESQUISAR
+		a.button.button--dark(href="/admin/matriarcas/inserir") ADICIONAR
+	section.card__grid
+		each girl in girls
+			.card
+				figure.card__figure
+					img.card__image(
+						data-src=`/storage/${girl.images[0]}`,
+						alt=`Acompanhante ${girl.city} - ${girl.displayName}`
+						title=`Acompanhante ${girl.city} - ${girl.displayName}`
+						data-loading="lazy"
+					)
+				.card__title=girl.displayName.toUpperCase()
+				.card__subtitle #{girl.age} anos ~ #{girl.height / 100}m ~ #{girl.weight}Kg
+				.card__pill
+					!=svg('location-pin', 'card__pill__icon')
+					span.card__pill__text #{girl.city.toUpperCase()}, #{girl.neighborhood.toUpperCase()}
+				.card__footer
+					.card__footer__left
+						!=svg('calendar', 'card__footer__icon')
+						.card__footer__text=formattedDate(girl.createdAt)
+					.card__footer__right
+						a.button--rounded.button--yellow(href=`/admin/matriarcas/editar/${girl.id}`, title="Editar")
+							!=svg('pencil', 'button__icon')
+						if girl.isActive
+							a.button--rounded.button--danger(href=`/admin/matriarcas/status/${girl.id}`, title="Excluir")
+								!=svg('trash', 'button__icon')
+						else
+							a.button--rounded.button--yellow(href=`/admin/matriarcas/status/${girl.id}`, title="Restaurar")
+								!=svg('restore', 'button__icon')

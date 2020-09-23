@@ -1,0 +1,21 @@
+.banner
+	position: relative
+	&__image
+		+cover
+	&__text
+		+position(50%, 50%)
+		+font($w: $font-3, $a: center, $c: $light-golden, $lh: 1.3)
+		filter: drop-shadow($shadow-2)
+		transform: translate(50%, -50%)
+
++desktop
+	.banner
+		&__text
+			font-size: 2rem
+
++mobile
+	.banner
+		&__text
+			font-size: 1.5rem
+		&__image
+			min-height: 300px

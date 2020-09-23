@@ -1,0 +1,11 @@
+mixin Checkbox
+	fieldset.checkbox
+		label.checkbox__label(for=attributes.name, class=(attributes.checked && 'checkbox__label--active'))=attributes.label
+		input.checkbox__input(
+			id=attributes.name
+			type="checkbox"
+			name=attributes.name
+			required=attributes.required
+			hidden
+			checked=attributes.checked
+		)

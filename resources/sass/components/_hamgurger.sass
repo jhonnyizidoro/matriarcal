@@ -1,0 +1,36 @@
++desktop
+	.hamburger
+		display: none
+
++mobile
+	.hamburger
+		+flex($a: center)
+		cursor: pointer
+		padding: 10px 0
+		&__label
+			color: $light
+			margin-right: 7px
+			transition: 1s
+			will-change: transform, opacity
+		&__menu
+			+size(20px, 2px)
+			background: $light
+			transition: 1s
+			will-change: transform
+			&:nth-child(1),
+			&:nth-child(3)
+				transform-origin: 0 0
+			&:nth-child(2)
+				margin: 5px 0
+		&--active
+			.hamburger
+				&__label
+					opacity: 0
+					transform: translateX(25px) skew(55deg)
+				&__menu
+					&:nth-child(1)
+						transform: rotate(45deg)
+					&:nth-child(2)
+						opacity: 0
+					&:nth-child(3)
+						transform: rotate(-45deg)

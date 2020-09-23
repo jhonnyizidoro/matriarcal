@@ -1,0 +1,58 @@
+.card
+	box-shadow: $shadow-1
+	text-align: center
+	&__grid
+		margin-top: 30px
+	&__figure
+		padding-top: 100%
+		position: relative
+	&__image
+		+cover
+		+position(0, 0)
+	&__title
+		font-weight: $font-2
+		margin: 15px 0 5px
+	&__subtitle
+		+font(.9rem, $st: italic, $c: $light)
+	&__pill
+		+flex(center, center)
+		background: $golden-gradient
+		border-radius: 99px
+		margin: 20px auto
+		padding: 5px 15px
+		max-width: 80%
+	&__pill__icon
+		+size(15px)
+		path
+			fill: $dark
+	&__pill__text
+		+font(.9rem, $font-2, $c: $dark)
+	&__footer
+		+flex(space-between, center)
+		border-top: 1px solid $lighter-dark
+		padding: 15px 20px
+	&__footer__left
+		+flex($a: center)
+	&__footer__icon
+		+size(20px)
+		margin-right: 7px
+		path
+			fill: $light
+	&__footer__text
+		+font(.9rem, $c: $light)
+	&__footer__right
+		+flex
+
++desktop
+	.card
+		transition: 350ms
+		&__grid
+			+grid(3, 35px)
+		&:hover
+			transform: translate(-2px, -3px)
+
++mobile
+	.card
+		display: inline-block
+		margin-bottom: 30px
+		width: 100%

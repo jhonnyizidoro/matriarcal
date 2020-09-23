@@ -1,0 +1,32 @@
+.text__box
+	box-shadow: $shadow-1
+	color: $light
+	margin: 25px 0
+	padding: 15px
+	&__title
+		font-size: 1.2rem
+	&__content
+		line-height: 1.5
+		margin: 10px 0 15px
+	&__footer
+		border-top: 1px solid $lighter-dark
+		font-size: .9rem
+		padding-top: 15px
+	&__footer__link
+		text-decoration: underline
+		&:not(:last-child)
+			margin-right: 7px
+
++desktop
+	.text__box
+		&__footer
+			+flex
+		&__footer__item:not(:last-child)
+			margin-right: 20px
+
++mobile
+	.text__box
+		&__footer__link
+			margin-top: 10px
+		&__footer__item
+			margin-top: 10px

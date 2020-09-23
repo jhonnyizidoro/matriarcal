@@ -1,0 +1,141 @@
+.form
+	&__group
+		margin-top: 25px
+		flex-grow: 1
+		position: relative
+		&--large
+			grid-column: auto / span 2
+	&__submit
+		margin-top: 25px
+	&__input,
+	&__select,
+	&__textarea
+		+font($c: $light, $lh: 1.5)
+		background: $lighter-dark
+		border: 0
+		padding: 13px 10px
+		width: 100%
+	&__textarea
+		height: 15em
+	&__label
+		+position(18px, $l: 10px)
+		+font(.9rem, $c: $light, $st: italic)
+		pointer-events: none
+		transition: 250ms
+		&--active
+			+position(-5px, $l: 5px)
+			font-size: .7rem
+			transform: translateY(-100%)
+
+.login
+	text-align: center
+	&__container
+		+flex(center, center)
+		height: 100vh
+	&__image
+		width: 300px
+
+.girl__form
+	&__images
+		border-bottom: 1px solid $lighter-dark
+		border-top: 1px solid $lighter-dark
+		margin: 40px 0
+		padding: 40px 0
+	&__sortable
+		margin-top: 30px
+	&__sortable__item
+		border: 1px solid $lighter-dark
+		cursor: move
+		position: relative
+	&__sortable__remove
+		+position(4px, 4px)
+		background: $danger
+		border-radius: 50%
+		box-shadow: $shadow-2
+		cursor: pointer
+		padding: 8px 12px
+	&__sortable__image
+		+cover
+		min-height: 80px
+
+
+.search__form
+	background: $dark
+	box-shadow: $shadow-1
+	transform: translateY(-40px)
+
+.simple__form
+	margin: 25px auto 0
+	max-width: 550px
+	&__title
+		+font(1.6rem, $font-1, $a: center)
+
+.checkbox
+	display: inline-block
+	&__label
+		color: $light
+		cursor: pointer
+		display: block
+		padding: 15px 35px
+		position: relative
+		&::after,
+		&::before
+			transition: 250ms
+			pointer-events: none
+		&::after
+			+size(25px)
+			+position($b: 12px, $l: 0)
+			background: $lighter-dark
+			content: ''
+		&::before
+			+position($b: 14px, $l: 5px)
+			+font(1.2rem, bold)
+			color: $dark
+			content: '\2713'
+			opacity: 0
+			z-index: 1
+		&--active::after
+			background: $dark-golden
+		&--active::before
+			opacity: 1
+
++desktop
+	.search__form
+		+grid(5, 0 20px)
+		padding: 0 25px 25px
+	.login
+		box-shadow: $shadow-1
+		min-width: 500px
+		padding: 25px
+	.admin__search
+		+flex($a: flex-end)
+		> *:not(:last-child)
+			margin-right: 20px
+	.girl__form
+		&__main__data
+			+grid(3, 0 20px)
+		&__images__header
+			+flex($a: center)
+		&__sortable
+			+grid(8, 10px)
+
++mobile
+	.form
+		&__group
+			order: 0
+		&__submit
+			order: 1
+	.search__form
+		+flex($d: column)
+		padding: 0 15px 15px
+	.login
+		width: 100%
+	.admin__search
+		+flex($d: column)
+		> *
+			margin-top: 25px
+	.girl__form
+		&__images__header
+			+flex($d: column, $g: 1)
+		&__sortable
+			+grid(3, 10px)

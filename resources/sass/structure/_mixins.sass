@@ -1,0 +1,77 @@
+=mobile
+	@media (max-width: 1000px)
+		@content
+
+=desktop
+	@media (min-width: 1000px)
+		@content
+
+=grid($c: false, $g: false, $j: false, $a: false)
+	display: grid
+	@if $a
+		align-items: $a
+	@if $g
+		grid-gap: $g
+	@if $c
+		grid-template-columns: repeat($c, minmax(0, 1fr))
+	@if $j
+		justify-items: $j
+
+=flex($j: false, $a: false, $d: false, $w: false, $g: false, $s: false, $b: false)
+	@if $a
+		align-items: $a
+	display: flex
+	@if $d
+		flex-direction: $d
+	@if $w
+		flex-wrap: $w
+	@if $j
+		justify-content: $j
+	@if $g or $s or $b
+		> *
+			@if $b
+				flex-basis: $b
+			@if $g
+				flex-grow: $g
+			@if $s
+				flex-shrink: $s
+
+=font($s: false, $w: false, $lh: false, $c: false, $t: false, $a: false, $ls: false, $st: false, $d: false, $f: false)
+	@if $c
+		color: $c
+	@if $f
+		font-family: $f
+	@if $s
+		font-size: $s
+	@if $st
+		font-style: $st
+	@if $w
+		font-weight: $w
+	@if $ls
+		letter-spacing: $ls
+	@if $lh
+		line-height: $lh
+	@if $a
+		text-align: $a
+	@if $d
+		text-decoration: $d
+	@if $t
+		text-transform: $t
+
+=position($t: auto, $r: auto, $b: auto, $l: auto, $p: absolute)
+	@if $p
+		position: $p
+	bottom: $b
+	left: $l
+	right: $r
+	top: $t
+
+=cover
+	display: block
+	height: 100%
+	object-fit: cover
+	width: 100%
+
+=size($width, $height: $width)
+	height: $height
+	width: $width

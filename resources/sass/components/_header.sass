@@ -1,0 +1,15 @@
+.header
+	padding: 20px 0
+	&__container
+		+flex(space-between, center)
+
++desktop
+	.header
+		border-bottom: 1px solid $lighter-dark
+		&__image
+			width: 250px
+
++mobile
+	.header
+		&__image
+			width: 150px

@@ -1,0 +1,11 @@
+mixin Select
+	fieldset.form__group
+		label.form__label(for=attributes.name)=attributes.label
+		select.form__select(
+			id=attributes.name
+			name=attributes.name
+			required=attributes.required
+			data-selected=attributes.selectedOption
+		)
+			option
+			block

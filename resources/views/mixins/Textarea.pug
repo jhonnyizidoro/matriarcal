@@ -1,0 +1,9 @@
+mixin Textarea
+	fieldset.form__group
+		label.form__label(for=attributes.name)=attributes.label
+		textarea.form__textarea(
+			id=attributes.name
+			name=attributes.name
+			required=attributes.required
+		)
+			block

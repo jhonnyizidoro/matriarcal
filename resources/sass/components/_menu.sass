@@ -1,0 +1,43 @@
+.menu
+	background: $dark
+	box-shadow: $shadow-1
+	padding: 20px
+	z-index: 1
+	&__link
+		color: $light
+
++desktop
+	.menu
+		+position($b: 0, $l: 0, $p: fixed)
+		+size(250px, 100%)
+		&__image
+			margin-bottom: 30px
+			width: 100%
+		&__link
+			display: block
+			font-size: 1.2rem
+			padding: 15px 0
+			transition: 250ms
+			&:hover
+				color: $white
+
++mobile
+	.menu
+		+flex(space-between)
+		width: 100%
+		&__image
+			width: 100px
+		&__link
+			display: block
+			padding: 20px
+		&__links
+			+position(0, $l: 0, $p: fixed)
+			+size(200px, 100%)
+			background: $dark
+			box-shadow: $shadow-1
+			padding: 50px 0
+			transform: translateX(-100%)
+			transition: 700ms
+			z-index: 1
+			&--active
+				transform: none

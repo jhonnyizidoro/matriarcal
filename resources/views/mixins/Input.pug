@@ -1,0 +1,13 @@
+mixin Input
+	fieldset.form__group(class=(attributes.class ? `form__group--${attributes.class}` : ''))
+		label.form__label(for=attributes.name)=attributes.label
+		input.form__input(
+			id=attributes.name
+			type=attributes.type || 'text'
+			name=attributes.name
+			inputmode=attributes.inputmode
+			autocomplete=attributes.autocomplete
+			data-mask=attributes.mask
+			required=attributes.required
+			value=attributes.value
+		)

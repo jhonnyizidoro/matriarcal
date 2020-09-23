@@ -1,0 +1,69 @@
+extends template
+block Content
+	.container
+		main.girl
+			.girl__left
+				.carousel
+					.carousel__track(data-glide-el="track")
+						.carousel__slides
+							each image in girl.images
+								img.carousel__slide(src=`/storage/${image}`, alt=`Acompanhante ${girl.city} - ${girl.name}`, title=`Acompanhante ${girl.city} - ${girl.name}`)
+					.carousel__controls(data-glide-el="controls")
+						.carousel__control__left(data-glide-dir="<")
+							!=svg('left-arrow', 'carousel__control__icon')
+						.carousel__control__right(data-glide-dir=">")
+							!=svg('right-arrow', 'carousel__control__icon')
+			.girl__right
+				h1.girl__name=girl.displayName.toUpperCase()
+				h2.girl__title=girl.title
+				.girl__icons
+					if girl.instagram
+						a(href=girl.instagram, target="_blank", rel="noopener", title=girl.instagram)
+							!=svg('instagram', 'girl__icon')
+					if girl.facebook
+						a(href=girl.facebook, target="_blank", rel="noopener", title=girl.facebook)
+							!=svg('facebook', 'girl__icon')
+				.girl__attributes
+					.girl__attribute #[strong Idade:] #{girl.age}
+					.girl__attribute #[strong Região:] #{girl.city} - #{girl.neighborhood}
+					.girl__attribute #[strong Peso:] #{girl.weight}Kg
+					.girl__attribute #[strong Altura:] #{girl.height / 100}m
+					.girl__attribute #[strong Atendo:] #{girl.publicType}
+					.girl__attribute #[strong Local:] #{girl.place}
+					.girl__attribute #[strong Pagamento:] #{girl.payment}
+				.girl__contact
+					if girl.whatsApp
+						a.button.button--whatsapp.button--fullwidth(href="#", rel="noopener", data-whatsApp=girl.whatsApp, target="_blank", title=`Entre em contato ${girl.whatsApp}`)
+							!=svg('whatsapp', 'button__icon')
+							span=girl.whatsApp
+					if girl.phone
+						a.button.button--phone.button--fullwidth(href=`tel:${girl.phone}`, title=`Entre em contato ${girl.phone}`)
+							!=svg('telephone', 'button__icon')
+							span=girl.phone
+				.girl__values
+					.girl__value #[strong 30min:]&nbsp;R$#{girl.halfAnHourValue},00
+					.girl__value #[strong 1h:]&nbsp;R$#{girl.hourValue},00
+		.girl__details
+			.girl__details__title SOBRE MIM
+			p.girl__details__content=girl.details
+			.girl__details__footer
+				if girl.whatsApp
+					.girl__details__footer__text #[strong WhatsApp:] #{girl.whatsApp}
+				if girl.phone
+					.girl__details__footer__text #[strong Telefone:] #{girl.phone}
+				if girl.email
+					.girl__details__footer__text #[strong E-mail:] #{girl.email}
+				if girl.instagram
+					.girl__details__footer__text #[strong Instagram:] @#{girl.instagram.split('/')[3]}
+				if girl.facebook
+					.girl__details__footer__text #[strong Facebook:] #{girl.facebook.split('/')[3]}
+		.girl__share
+			button.button.button--golden(data-share, aria-label="Compartilhar", type="button") COMPARTILHE MEU PERFIL
+		if girl.comments.length
+			.girl__comments
+				.girl__comments__title TESTEMUNHOS
+				each comment in girl.comments
+					.girl__comments__block
+						.girl__comments__subtitle=comment.title
+						.girl__comments__small=formattedDate(comment.createdAt)
+						p.girl__comments__text=comment.content

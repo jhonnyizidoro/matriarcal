@@ -1,0 +1,55 @@
+.button
+	+font($a: center, $w: $font-2)
+	+flex(center, center)
+	border: 0
+	box-shadow: $shadow-2
+	display: inline-block
+	cursor: pointer
+	&__icon
+		+size(1.25em)
+		&:not(:last-child)
+			margin-right: 7px
+	&--golden
+		background: $golden-gradient
+		color: $dark
+		padding: 15px
+	&--dark
+		background: $lighter-dark
+		padding: 18px 15px
+	&--yellow
+		background: $dark-golden
+		margin-right: 7px
+		path
+			fill: $dark
+	&--danger
+		background: $danger
+		path
+			fill: $white
+	&--fullwidth
+		width: 100%
+	&--rounded
+		border-radius: 50%
+		padding: 7px
+	&--whatsapp
+		+flex(center, center)
+		+font(1.2rem, $font-1)
+		background: $whatsapp-gradient
+		border-radius: 99px
+		padding: 15px 0
+		path
+			fill: $white
+	&--phone
+		+flex(center, center)
+		+font(1.2rem, $font-1, $c: $dark)
+		background: $golden-gradient
+		border-radius: 99px
+		margin: 20px 0
+		padding: 15px 0
+		path
+			fill: $dark
+
++desktop
+	.button
+		transition: 250ms
+		&:hover
+			transform: translate(-2px, -2px)

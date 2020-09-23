@@ -1,0 +1,15 @@
+.alert
+	+position(15px, 50%, $p: fixed)
+	+font($c: $dark, $a: center, $lh: 1.5)
+	background: $light-golden
+	border: 4px solid $dark-golden
+	box-shadow: $shadow-1
+	cursor: pointer
+	max-width: 400px
+	padding: 10px
+	transform: translate(50%, -150%)
+	transition: 2s
+	width: 90vw
+	z-index: 1
+	&--visible
+		transform: translateX(50%)

@@ -1,0 +1,12 @@
+extends template
+block Content
+	.container
+		form.simple__form(action="/testemunhe", method="POST")
+			h1.simple__form__title FAÇA SEU TESTEMUNHO
+			+Input(name="title", label="Título", required)
+			+Select(name="girlId", label="Deusa grega", required)
+				for girl in girls
+					option(value=girl.id)=girl.displayName
+			+Textarea(name="content", label="Sua mensagem", required)
+			.form__submit
+				button.button.button--golden.button--fullwidth(type="submit", aria-label="Enviar contao") Enviar contao

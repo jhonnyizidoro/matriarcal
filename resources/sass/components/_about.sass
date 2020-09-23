@@ -1,0 +1,12 @@
+.about
+	&__title
+		font-size: 1.8rem
+		margin-bottom: 20px
+	&__text
+		+font($c: $light, $lh: 1.6, $a: justify)
+		margin-bottom: 15px
+
++mobile
+	.about
+		&__title
+			+font($a: center, $lh: 1.6)

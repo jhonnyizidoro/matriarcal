@@ -1,0 +1,23 @@
+.footer
+	background: $golden-gradient
+	margin-top: 100px
+	padding: 15px 0
+	&__container
+		+flex(space-between, center)
+	&__text
+		+font(.8rem, $c: $dark)
+		display: block
+		margin: 5px 0
+
++desktop
+	.footer
+		&__right
+			text-align: right
+
++mobile
+	.footer
+		text-align: center
+		&__container
+			flex-direction: column
+		&__right
+			margin-top: 25px

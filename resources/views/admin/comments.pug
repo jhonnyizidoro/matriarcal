@@ -1,0 +1,22 @@
+extends template
+block Content
+	form.admin__search
+		+Input(name="content", label="Palavras Chave", inputmode="search", value=param('content'))
+		+Select(name="isActive", label="Status")
+			option(value="1", selected=param('isActive') === '1') Ativos
+			option(value="0", selected=param('isActive') === '0') Excluídos
+		+Select(name="isApproved", label="Aprovação")
+			option(value="1", selected=param('isApproved') === '1') Aprovados
+			option(value="0", selected=param('isApproved') === '0') Não aprovados
+		button.button.button--golden(type="submit", aria-label="Pesquisar") PESQUISAR
+	each comment in comments
+		.text__box
+			.text__box__title=comment.title
+			.text__box__content=comment.content
+			.text__box__footer
+				.text__box__footer__item #[strong Status:&nbsp;] #{comment.statusLabel}
+				.text__box__footer__item #[strong Data:&nbsp;] #{formattedDate(comment.createdAt)}
+				.text__box__footer__item #[strong Ações:&nbsp;]
+					a.text__box__footer__link(href=`/admin/testemunhos/aprovacao/${comment.id}`) #{comment.isApproved ? 'reprovar' : 'aprovar'}
+					a.text__box__footer__link(href=`/admin/testemunhos/status/${comment.id}`) #{comment.isActive ? 'excluir' : 'restaurar'}
+				.text__box__footer__item #[strong Matriarca:&nbsp;] #{comment.girl.displayName}

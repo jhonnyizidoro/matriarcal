@@ -1,0 +1,53 @@
+extends template
+block Content
+	form.girl__form(action=`/admin/matriarcas/${girl.id ? 'editar' : 'inserir'}`, method="POST")
+		input(type="hidden", value=girl.id, name="id")
+		input(type="file", multiple, id="images", hidden, accept="image/png, image/jpeg, image/jpg")
+		.girl__form__main__data
+			+Input(name="displayName", label="Nome de exibição", required, value=girl.displayName)
+			+Select(name="age", label="Idade", required)
+				- for (let age = 18; age < 100; age++)
+					option(selected=girl.age === age)=age
+			+Select(name="weight", label="Peso", required)
+				- for (let weight = 40; weight < 161; weight++)
+					option(value=weight, selected=girl.weight === weight) #{weight}kg
+			+Input(name="title", label="Título", class="large", required, value=girl.title)
+			+Select(name="height", label="Altura", required)
+				- for (let height = 40; height < 221; height++)
+					option(value=height, selected=girl.height === height) #{height}cm
+			+Select(name="state", label="Estado", required, selectedOption=girl.cityId)
+				each state in states
+					option(value=state.id, selected=girl.stateId === state.id)=state.abbreviation
+			+Select(name="cityId", label="Cidade", required)
+			+Input(name="neighborhood", label="Bairro", required, value=girl.neighborhood)
+			+Input(name="instagram", label="Instagram (link)", inputmode="url", value=girl.instagram)
+			+Input(name="facebook", label="Facebook (link)", inputmode="url", value=girl.facebook)
+			+Input(name="email", label="E-mail", inputmode="email", value=girl.email)
+			+Input(name="whatsApp", label="WhatsApp", mask="phone", inputmode="numeric", value=girl.whatsApp)
+			+Input(name="phone", label="Telefone", mask="phone", inputmode="numeric", value=girl.phone)
+			+Select(name="publicType", label="Público", required)
+				each publicType in ['Homes', 'Mulheres', 'Casais', 'Homens e mulheres', 'Homens, mulheres e casais']
+					option(selected=girl.publicType === publicType)=publicType
+			+Select(name="halfAnHourValue", label="Cachê 30 minutos", required)
+				- for (let halfAnHourValue = 10; halfAnHourValue < 801; halfAnHourValue = halfAnHourValue + 5)
+					option(value=halfAnHourValue, selected=girl.halfAnHourValue === halfAnHourValue) R$#{halfAnHourValue},00
+			+Select(name="hourValue", label="Cachê 1 hora", required)
+				- for (let hourValue = 10; hourValue < 1201; hourValue = hourValue + 5)
+					option(value=hourValue, selected=girl.hourValue === hourValue) R$#{hourValue},00
+			+Select(name="payment", label="Pagamento", required)
+				each payment in ['Dinheiro', 'Cartão', 'Dinheiro e cartão']
+					option(selected=girl.payment === payment)=payment
+			+Select(name="place", label="Local", required)
+				each place in ['Próprio', 'Hoteis e afins']
+					option(selected=girl.place === place)=place
+		.girl__form__images
+			.girl__form__images__header
+				label.button.button--golden(for="images") Selecionar images
+			.girl__form__sortable
+				each image in girl.images
+					.girl__form__sortable__item
+						.girl__form__sortable__remove x
+						img.girl__form__sortable__image(src=`/storage/${image}`, alt=girl.name)
+		+Textarea(name="details", label="Mais detalhes")=girl.details
+		.form__submit
+			button.button.button--golden.button--fullwidth(type="submit", aria-label="Salvar") Salvar

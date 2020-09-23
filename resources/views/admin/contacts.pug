@@ -1,0 +1,17 @@
+extends template
+block Content
+	form.admin__search
+		+Input(name="content", label="Título ou conteúdo", inputmode="search", value=param('content'))
+		+Select(name="isRead", label="Status")
+			option(value="1", selected=param('isRead') === '1') Lidos
+			option(value="0", selected=param('isRead') === '0') Não lidos
+		button.button.button--golden(type="submit", aria-label="Pesquisar") PESQUISAR
+	each contact in contacts
+		.text__box
+			.text__box__title=contact.name
+			.text__box__content=contact.content
+			.text__box__footer
+				.text__box__footer__item #[strong Data:&nbsp;] #{formattedDate(contact.createdAt)}
+				.text__box__footer__item #[strong Ações:&nbsp;]
+					a.text__box__footer__link(href=`/admin/contatos/leitura/${contact.id}`) #{contact.isRead ? 'marcar como não lido' : 'marcar como lido'}
+				.text__box__footer__item #[strong Contato:&nbsp;] #{contact.contact}

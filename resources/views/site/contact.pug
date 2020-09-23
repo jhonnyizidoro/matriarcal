@@ -1,0 +1,10 @@
+extends template
+block Content
+	.container
+		form.simple__form(action="/anuncie", method="POST")
+			h1.simple__form__title ENTRE EM CONTATO
+			+Input(name="name", label="Nome", required)
+			+Input(name="contact", label="Contato (e-mail ou telefone)", required)
+			+Textarea(name="content", label="Sua mensagem", required)
+			.form__submit
+				button.button.button--golden.button--fullwidth(type="submit", aria-label="Enviar contao") Enviar contao

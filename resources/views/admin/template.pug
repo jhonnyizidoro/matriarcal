@@ -1,0 +1,23 @@
+include ../mixins/includes
+doctype html
+html(lang="pt-br")
+	head
+		+Head
+	body
+		menu.menu
+			img.menu__image(src="/images/logo.png", alt="Logo Matriarcal")
+			.menu__links
+				a.menu__link(href="/admin/matriarcas") Matriarcas
+				a.menu__link(href="/admin/testemunhos") Testemunhos
+				a.menu__link(href="/admin/contatos") Contatos
+				a.menu__link(href="/admin/sair") Sair
+			.hamburger
+				.hamburger__label MENU
+				.hamburger__menus
+					.hamburger__menu
+					.hamburger__menu
+					.hamburger__menu
+		.admin__container
+			block Content
+		+Alert
+		script(src="/js/app.js")

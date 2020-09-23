@@ -1,0 +1,32 @@
+include ../mixins/includes
+doctype html
+html(lang="pt-br")
+	head
+		+Head
+	body
+		header.header
+			.container.header__container
+				a.header__image__link(href="/")
+					img.header__image(src="/images/logo.png", alt="Logo Matriarcal")
+				nav.nav
+					a.nav__link(href="/") INÍCIO
+					a.nav__link(href="/anuncie") SEJA UMA MATRIARCA
+					a.nav__link(href="/testemunhe") TESTEMUNHE
+				.hamburger
+					.hamburger__label MENU
+					.hamburger__menus
+						.hamburger__menu
+						.hamburger__menu
+						.hamburger__menu
+		block Content
+		footer.footer
+			.container.footer__container
+				.footer__left
+					.footer__text © #{new Date().getFullYear()} MATRIARCAL. Todos os direitos reservados.
+				.footer__right
+					strong.footer__text Desenvolvido por
+					a.footer__text(href="https://jhonnyizidoro.github.io/", rel="noopener", target="_blank") Jhonny Izidoro Menarim
+					a.footer__text(href="https://www.reinaldin.com.br/", rel="noopener", target="_blank") Reinaldin Consultoria
+		+Alert
+		script(src="/js/app.js")
+		script(async, src="https://www.googletagmanager.com/gtag/js?id=UA-178746175-1")
