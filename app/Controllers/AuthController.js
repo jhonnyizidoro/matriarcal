@@ -4,7 +4,10 @@ module.exports.renderLoginPage = (req, res) => {
 
 module.exports.login = (req, res) => {
 	const { username, password } = req.body
-	if (username === 'admin' && password === '123456') {
+	if (
+		(username === 'matriarcal' && password === '@admin') ||
+		(username === 'jhonny' && password === '@admin')
+	) {
 		req.session.isAuthenticated = true
 		res.redirect('/admin/matriarcas')
 	} else {
