@@ -22,8 +22,10 @@ export const setWhatsAppLink = () => {
 }
 
 export const googleAnalytics = () => {
-	window.gtag = () => dataLayer.push(arguments)
 	window.dataLayer = window.dataLayer || []
+	window.gtag = function() {
+		window.dataLayer.push(arguments)
+	}
 	gtag('js', new Date())
-	gtag('config', 'UA-141577832-2')
+	gtag('config', 'UA-178746175-1')
 }

@@ -18,7 +18,6 @@ document.addEventListener('DOMContentLoaded', () => {
 	initLabels()
 	lazyLoadImages()
 	setSourceByDevice()
-	googleAnalytics()
 })
 
 window.addEventListener('load', () => {
@@ -34,4 +33,5 @@ window.addEventListener('load', () => {
 	setWhatsAppLink()
 	initShareButtons()
 	initAlertMessage()
+	googleAnalytics()
 })
