@@ -27,7 +27,7 @@ if (dev) {
 	app.use(logger('dev'))
 } else {
 	app.use(compression())
-	app.use(helmet())
+	app.use(helmet({ contentSecurityPolicy: false }))
 }
 
 app.use(session({ secret: '8790891726', resave: false, saveUninitialized: true }))
