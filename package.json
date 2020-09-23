@@ -7,7 +7,7 @@
 	"scripts": {
 		"watch": "gulp watch",
 		"build": "gulp build",
-		"start": "node server.js"
+		"start": "npm install --only=prod && node server.js"
 	},
 	"dependencies": {
 		"compression": "^1.7.4",

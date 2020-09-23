@@ -48,7 +48,7 @@ CREATE TABLE IF NOT EXISTS Girls
     createdAt       TIMESTAMP    NOT NULL DEFAULT NOW(),
     updatedAt       TIMESTAMP,
     cityId          INT          NOT NULL,
-    FOREIGN KEY (cityId) REFERENCES cities (id)
+    FOREIGN KEY (cityId) REFERENCES Cities (id)
 );
 
 CREATE TABLE IF NOT EXISTS Comments
