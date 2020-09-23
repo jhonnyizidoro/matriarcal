@@ -20,3 +20,11 @@ module.exports.checkAuth = (req, res, next) => {
 		res.redirect('/admin/login')
 	}
 }
+
+module.exports.forceHttps = (req, res, next) => {
+	if (!req.secure && req.get('x-forwarded-proto') !== 'https' && process.env.NODE_ENV === 'production') {
+		res.redirect('https://' + req.get('host') + req.url)
+	} else {
+		next()
+	}
+}

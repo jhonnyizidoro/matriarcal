@@ -1,5 +1,5 @@
 const { join } = require('path')
-const { globalVariables, clearAlert } = require('./app/Middleware')
+const { globalVariables, forceHttps } = require('./app/Middleware')
 const assets = require('express-asset-versions')
 const session = require('express-session')
 const compression = require('compression')
@@ -30,6 +30,7 @@ if (dev) {
 	app.use(helmet({ contentSecurityPolicy: false }))
 }
 
+app.use(forceHttps)
 app.use(session({ secret: '8790891726', resave: false, saveUninitialized: true }))
 app.use(express.urlencoded({ extended: false }))
 app.use(express.json({ limit: '20mb' }))
