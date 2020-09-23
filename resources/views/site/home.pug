@@ -28,7 +28,7 @@ block Content
 			.form__group.form__group--large
 				+Checkbox(name="creditCard", label="Aceita cartão", checked=!!param('creditCard'))
 				+Checkbox(name="ownPlace", label="Local próprio", checked=!!param('ownPlace'))
-		h1.title NOSSAS DEUSAS
+		h1.title #{girls.length ? 'NOSSAS DEUSAS' : 'NENHUMA DEUSA ENCONTRADA'}
 		main.card__grid
 			each girl in girls
 				a.card(href=getOptimizedUrl(girl))
