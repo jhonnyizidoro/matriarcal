@@ -69,7 +69,11 @@ module.exports.renderHomePage = async (req, res) => {
 }
 
 module.exports.render404Page = (req, res) => {
-	res.render('site/404')
+	res.status(404).render('site/404')
+}
+
+module.exports.render500Page = (err, req, res, next) => {
+	res.status(500).render('site/500', { err })
 }
 
 module.exports.sendSitemap = async (req, res) => {

@@ -3,8 +3,13 @@ const { checkAuth } = require('../app/Middleware')
 
 const { getCitiesByState } = require('../app/Controllers/CityController')
 const { uploadGirlImage } = require('../app/Controllers/GirlImageController')
-const { renderHomePage, sendSitemap, render404Page } = require('../app/Controllers/SiteController')
 const { renderLoginPage, login, logout } = require('../app/Controllers/AuthController')
+const {
+	renderHomePage,
+	sendSitemap,
+	render404Page,
+	render500Page,
+} = require('../app/Controllers/SiteController')
 const {
 	renderContactPage,
 	insertContact,
@@ -56,5 +61,6 @@ router.get('/api/cidades/:id', getCitiesByState)
 router.post('/api/upload', checkAuth, uploadGirlImage)
 
 router.get('*', render404Page)
+router.use(render500Page)
 
 module.exports = router
