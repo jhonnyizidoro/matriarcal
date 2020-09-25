@@ -14,7 +14,7 @@ export const initGirlCarousel = () => {
 const adjustHeightBasedOnCurrentSlide = (glide, carousel) => {
 	const slides = getCarouselSlides()
 	const height = slides[glide.index + 1].height
-	if (height > 100) {
+	if (height) {
 		carousel.style.height = `${height}px`
 	}
 }

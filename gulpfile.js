@@ -6,6 +6,7 @@ const pump = require('pump')
 //Sass
 const sass = require('gulp-sass')
 const cleanCSS = require('gulp-clean-css')
+const prefixer = require('gulp-autoprefixer')
 const extractMediaQueries = require('gulp-extract-media-queries')
 
 //JavaScript
@@ -31,6 +32,7 @@ task(images = () => pump([
 task(styles = () => pump([
 	src('resources/sass/app.sass'),
 	sass().on('error', sass.logError),
+	prefixer(),
 	extractMediaQueries(),
 	cleanCSS(),
 	dest('public/css'),
