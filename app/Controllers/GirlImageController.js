@@ -15,14 +15,13 @@ module.exports.uploadGirlImage = async (req, res) => {
 
 	createDirIfDoesntExists('storage')
 
-	const resizedBuffer = await sharp(bitmap).resize(1280, 1280, { fit: 'inside', withoutEnlargement: true }).toBuffer()
+	const resizedBuffer = await sharp(bitmap).resize(1280, 1280, { fit: 'inside' }).toBuffer()
 
 	const imageJimp = await jimp.read(resizedBuffer)
 	const watermarkJimp = await jimp.read('resources/images/watermark.png')
 	imageJimp.composite(watermarkJimp, 25, 25, { mode: jimp.BLEND_SOURCE_OVER })
 
 	const resizedWithWatermark = await imageJimp.getBufferAsync(jimp.MIME_PNG)
-	console.log(resizedWithWatermark)
 
 	const compressedBuffer = await imagemin.buffer(resizedWithWatermark, {
 		plugins: [
