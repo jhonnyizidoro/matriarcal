@@ -6,8 +6,11 @@ block Content
 				.carousel
 					.carousel__track(data-glide-el="track")
 						.carousel__slides
-							each image in girl.images
-								img.carousel__slide(src=`/storage/${image}`, alt=`Acompanhante ${girl.city} - ${girl.name}`, title=`Acompanhante ${girl.city} - ${girl.name}`)
+							if girl.images.length
+								each image in girl.images
+									img.carousel__slide(src=`/storage/${image}`, alt=`Acompanhante ${girl.city} - ${girl.name}`, title=`Acompanhante ${girl.city} - ${girl.name}`)
+							else
+								img.carousel__slide(src='/images/no-image.jpg', alt=`Acompanhante ${girl.city} - ${girl.name}`, title=`Acompanhante ${girl.city} - ${girl.name}`)
 					.carousel__controls(data-glide-el="controls")
 						.carousel__control__left(data-glide-dir="<")
 							!=svg('left-arrow', 'carousel__control__icon')
