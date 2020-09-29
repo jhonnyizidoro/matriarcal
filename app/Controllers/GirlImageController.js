@@ -19,7 +19,12 @@ module.exports.uploadGirlImage = async (req, res) => {
 
 	const imageJimp = await jimp.read(resizedBuffer)
 	const watermarkJimp = await jimp.read('resources/images/watermark.png')
-	imageJimp.composite(watermarkJimp, 25, 25, { mode: jimp.BLEND_SOURCE_OVER })
+
+	const xCenter = Math.floor((imageJimp.bitmap.width - watermarkJimp.bitmap.width) / 2)
+	const yCenter = Math.floor((imageJimp.bitmap.height - watermarkJimp.bitmap.height) / 2)
+
+	watermarkJimp.opacity(.75)
+	imageJimp.composite(watermarkJimp, xCenter, yCenter, { mode: jimp.BLEND_SOURCE_OVER })
 
 	const resizedWithWatermark = await imageJimp.getBufferAsync(jimp.MIME_PNG)
 
