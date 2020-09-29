@@ -11,7 +11,6 @@ Girl.init({
 	displayName: {
 		type: DataTypes.STRING,
 		allowNull: false,
-		unique: true,
 	},
 	title: {
 		type: DataTypes.STRING,

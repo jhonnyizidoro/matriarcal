@@ -15,7 +15,7 @@ module.exports.renderGirlsPage = async (req, res) => {
 		where.isActive = isActive
 	}
 
-	const girls = await Girl.findAllWithCompleteData({ where })
+	const girls = await Girl.findAllWithCompleteData({ where, order: [['createdAt', 'DESC']] })
 	res.render('admin/girls', { girls })
 }
 
@@ -43,6 +43,17 @@ module.exports.renderUpdateGirlPage = async (req, res) => {
 	const girl = await Girl.findWithCompleteData({ where: { id } })
 	const states = await State.findAll()
 	res.render('admin/girlForm', { states, girl })
+}
+
+module.exports.renderInsertGirlSitePage = async (req, res) => {
+	const states = await State.findAll()
+	res.render('site/girlForm', { states })
+}
+
+module.exports.insertSiteGirl = async (req, res) => {
+	await Girl.create({ ...req.body, isActive: false })
+	setAlert('Cadastro recebido com sucesso, entraremos em contato em breve.')
+	res.redirect('/')
 }
 
 module.exports.updateGirl = async (req, res) => {

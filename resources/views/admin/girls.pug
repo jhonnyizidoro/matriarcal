@@ -12,7 +12,7 @@ block Content
 			.card
 				figure.card__figure
 					img.card__image(
-						data-src=`/storage/${girl.images[0]}`,
+						data-src=(girl.images[0] ? `/storage/${girl.images[0]}` : '/images/no-image.jpg'),
 						alt=`Acompanhante ${girl.city} - ${girl.displayName}`
 						title=`Acompanhante ${girl.city} - ${girl.displayName}`
 						data-loading="lazy"

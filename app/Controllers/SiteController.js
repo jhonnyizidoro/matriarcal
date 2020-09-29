@@ -80,7 +80,7 @@ module.exports.sendSitemap = async (req, res) => {
 	const girls = await Girl.findAllWithCompleteData({ where: { isActive: true } })
 	const links = [
 		{ url: '/', changefreq: 'daily', priority: 1 },
-		{ url: '/anuncie', changefreq: 'weekly', priority: .5 },
+		{ url: '/contato', changefreq: 'weekly', priority: .5 },
 		{ url: '/testemunhe', changefreq: 'weekly', priority: .5 },
 	]
 	girls.forEach(girl => {

@@ -31,6 +31,8 @@ const {
 	updateGirl,
 	renderGirlPage,
 	toggleGirlStatus,
+	renderInsertGirlSitePage,
+	insertSiteGirl,
 } = require('../app/Controllers/GirlController')
 
 
@@ -51,8 +53,10 @@ router.get('/admin/contatos/leitura/:id', checkAuth, toggleContactRead)
 
 router.get(['/', '/acompanhantes-*'], renderHomePage)
 router.get('/acompanhante/*/*-:id', renderGirlPage)
-router.get('/anuncie', renderContactPage)
-router.post('/anuncie', insertContact)
+router.get('/contato', renderContactPage)
+router.post('/contato', insertContact)
+router.get('/seja-uma-matriarca', renderInsertGirlSitePage)
+router.post('/seja-uma-matriarca', insertSiteGirl)
 router.get('/testemunhe', renderCommentPage)
 router.post('/testemunhe', insertComment)
 router.get('/sitemap.xml', sendSitemap)

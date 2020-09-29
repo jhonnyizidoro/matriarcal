@@ -34,7 +34,7 @@ block Content
 				a.card(href=getOptimizedUrl(girl))
 					figure.card__figure
 						img.card__image(
-							data-src=`/storage/${girl.images[0]}`,
+							data-src=(girl.images[0] ? `/storage/${girl.images[0]}` : '/images/no-image.jpg'),
 							alt=`Acompanhante ${girl.city} - ${girl.name}`,
 							title=`Acompanhante ${girl.city} - ${girl.name}`
 							data-loading="lazy"
@@ -48,9 +48,7 @@ block Content
 			img.join__image(data-src="/images/logo-simple.png", alt="Logo Matriarcal", data-loading="lazy")
 			.join__title SEJA UMA MATRIARCA
 			.join__text Basta preencher um formulário que entraremos em contato com você.
-			a.button.button--golden(href="/anuncie") PREENCHER FORMULÁRIO
+			a.button.button--golden(href="/seja-uma-matriarca") PREENCHER FORMULÁRIO
 		section.about
 			.about__title CONHEÇA A #[strong MATRIARCAL]
-			p.about__text Morbi vestibulum volutpat enim. Curabitur turpis. Etiam imperdiet imperdiet orci. Proin sapien ipsum, porta a, auctor quis, euismod ut, mi. Nam commodo suscipit quam. Quisque rutrum. Curabitur a felis in nunc fringilla tristique. Quisque libero metus, condimentum nec, tempor a, commodo mollis, magna. Nullam sagittis. In consectetuer turpis ut velit.
-			p.about__text Donec posuere vulputate arcu. Aliquam eu nunc. Phasellus ullamcorper ipsum rutrum nunc. Praesent egestas tristique nibh. Fusce convallis metus id felis luctus adipiscing.
-			p.about__text Duis arcu tortor, suscipit eget, imperdiet nec, imperdiet iaculis, ipsum. Ut varius tincidunt libero. Vestibulum rutrum, mi nec elementum vehicula, eros quam gravida nisl, id fringilla neque ante vel mi. Praesent turpis. Pellentesque auctor neque nec urna.
+			p.about__text As matriarcas são mulheres de poder Sedução, sensualidade e muita beleza, são verdadeiras deusas da qual jamais irá esquecer. Deusas empoderadas de tudo que mais deseja e sonha e aqui você irá encontrar o seu eterno paraíso.

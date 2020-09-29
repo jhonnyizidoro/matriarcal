@@ -1,0 +1,44 @@
+extends template
+block Content
+	.container
+		form.simple__form(action="/seja-uma-matriarca", method="POST")
+			h1.simple__form__title SEJA UMA MATRIARCA
+			+Input(name="displayName", label="Nome de exibição", required)
+			+Select(name="age", label="Idade", required)
+				- for (let age = 18; age < 100; age++)
+					option=age
+			+Select(name="weight", label="Peso", required)
+				- for (let weight = 40; weight < 161; weight++)
+					option(value=weight) #{weight}kg
+			+Input(name="title", label="Título", class="large", required)
+			+Select(name="height", label="Altura", required)
+				- for (let height = 40; height < 221; height++)
+					option(value=height) #{height}cm
+			+Select(name="state", label="Estado", required)
+				each state in states
+					option(value=state.id)=state.abbreviation
+			+Select(name="cityId", label="Cidade", required)
+			+Input(name="neighborhood", label="Bairro", required)
+			+Input(name="instagram", label="Instagram (link)", inputmode="url")
+			+Input(name="facebook", label="Facebook (link)", inputmode="url")
+			+Input(name="email", label="E-mail", inputmode="email")
+			+Input(name="whatsApp", label="WhatsApp", mask="phone", inputmode="numeric")
+			+Input(name="phone", label="Telefone", mask="phone", inputmode="numeric")
+			+Select(name="publicType", label="Público", required)
+				each publicType in ['Homes', 'Mulheres', 'Casais', 'Homens e mulheres', 'Homens, mulheres e casais']
+					option=publicType
+			+Select(name="halfAnHourValue", label="Cachê 30 minutos", required)
+				- for (let halfAnHourValue = 10; halfAnHourValue < 801; halfAnHourValue = halfAnHourValue + 5)
+					option(value=halfAnHourValue) R$#{halfAnHourValue},00
+			+Select(name="hourValue", label="Cachê 1 hora", required)
+				- for (let hourValue = 10; hourValue < 1201; hourValue = hourValue + 5)
+					option(value=hourValue) R$#{hourValue},00
+			+Select(name="payment", label="Pagamento", required)
+				each payment in ['Dinheiro', 'Cartão', 'Dinheiro e cartão']
+					option=payment
+			+Select(name="place", label="Local", required)
+				each place in ['Próprio', 'Hoteis e afins']
+					option=place
+			+Textarea(name="details", label="Mais detalhes")
+			.form__submit
+				button.button.button--golden.button--fullwidth(type="submit", aria-label="Salvar") Salvar

@@ -27,7 +27,7 @@ CREATE TABLE IF NOT EXISTS Cities
 CREATE TABLE IF NOT EXISTS Girls
 (
     id              INT          NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    displayName     VARCHAR(255) NOT NULL UNIQUE,
+    displayName     VARCHAR(255) NOT NULL,
     title           VARCHAR(255) NOT NULL,
     age             INT          NOT NULL,
     weight          FLOAT        NOT NULL,

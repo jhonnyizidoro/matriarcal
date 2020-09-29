@@ -40,8 +40,8 @@ module.exports.seo = (girl, activeCity) => {
 		return adminDefaults('Contatos')
 	} else if (pathname.includes('admin/testemunhos')) {
 		return adminDefaults('Testemunhos')
-	} else if (pathname.includes('anuncie')) {
-		return siteDefaults('Anuncie')
+	} else if (pathname.includes('contato')) {
+		return siteDefaults('Contato')
 	} else if (pathname.includes('testemunhe')) {
 		return siteDefaults('Testemunhe')
 	} else if (pathname.includes('404')) {

@@ -1,7 +1,7 @@
 extends template
 block Content
 	.container
-		form.simple__form(action="/anuncie", method="POST")
+		form.simple__form(action="/contato", method="POST")
 			h1.simple__form__title ENTRE EM CONTATO
 			+Input(name="name", label="Nome", required)
 			+Input(name="contact", label="Contato (e-mail ou telefone)", required)
