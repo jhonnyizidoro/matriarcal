@@ -4,6 +4,7 @@ const sharp = require('sharp')
 const imagemin = require('imagemin')
 const imageminJpegtran = require('imagemin-jpegtran')
 const imageminPngquant = require('imagemin-pngquant')
+const jimp = require('jimp')
 
 module.exports.uploadGirlImage = async (req, res) => {
 	const { file } = req.body
@@ -15,7 +16,15 @@ module.exports.uploadGirlImage = async (req, res) => {
 	createDirIfDoesntExists('storage')
 
 	const resizedBuffer = await sharp(bitmap).resize(1280, 1280, { fit: 'inside', withoutEnlargement: true }).toBuffer()
-	const compressedBuffer = await imagemin.buffer(resizedBuffer, {
+
+	const imageJimp = await jimp.read(resizedBuffer)
+	const watermarkJimp = await jimp.read('resources/images/watermark.png')
+	imageJimp.composite(watermarkJimp, 25, 25, { mode: jimp.BLEND_SOURCE_OVER })
+
+	const resizedWithWatermark = await imageJimp.getBufferAsync(jimp.MIME_PNG)
+	console.log(resizedWithWatermark)
+
+	const compressedBuffer = await imagemin.buffer(resizedWithWatermark, {
 		plugins: [
 			imageminJpegtran(),
 			imageminPngquant({ quality: [0.8, 0.9] }),
